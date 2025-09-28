@@ -11,11 +11,18 @@ export default function Home() {
     axios.get(`${API}/movies`).then(res => setMovies(res.data)).catch(console.error);
   }, []);
 
-  return (
-    <div>
-      <h2>All Movies</h2>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(240px,1fr))', gap: 16 }}>
-        {movies.map(m => <MovieCard key={m._id} movie={m} />)}
+   return (
+    <div className="p-4">
+      <h2 className="text-2xl font-semibold mb-4">All Movies</h2>
+      <div
+        className="grid gap-4"
+        style={{
+          gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))'
+        }}
+      >
+        {movies.map(movie => (
+          <MovieCard key={movie._id} movie={movie} />
+        ))}
       </div>
     </div>
   );

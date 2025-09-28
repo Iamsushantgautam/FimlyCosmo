@@ -1,17 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
-const isAdmin = require('../middleware/admin'); // check admin
+const isAdmin = require('../middleware/admin'); // make sure you have this file
 const multer = require('multer');
-const cloudinary = require('../config/cloudinary');
+const cloudinary = require('../config/cloudinary'); // optional if using file upload
 const Movie = require('../models/Movie');
 const streamifier = require('streamifier');
 
-// Multer in-memory storage
+// Multer in-memory storage (optional)
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-// Helper: upload buffer to Cloudinary
+// Helper function: upload buffer to Cloudinary
 const uploadBuffer = (fileBuffer, folder = 'movie_app') => {
   return new Promise((resolve, reject) => {
     const uploadStream = cloudinary.uploader.upload_stream({ folder }, (error, result) => {
@@ -36,7 +36,10 @@ router.get('/', async (req, res) => {
 // ------------------- CREATE movie (admin only) -------------------
 router.post(
   '/',
-  [auth, isAdmin, upload.fields([{ name: 'poster', maxCount: 1 }, { name: 'screenshots', maxCount: 6 }])],
+  [
+    auth,
+    upload.fields([{ name: 'poster', maxCount: 1 }, { name: 'screenshots', maxCount: 6 }])
+  ],
   async (req, res) => {
     try {
       const { title, description, year, tags, posterUrl, screenshots } = req.body;

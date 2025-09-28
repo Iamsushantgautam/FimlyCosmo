@@ -1,3 +1,74 @@
 body { font-family: Arial, sans-serif; padding: 0; margin: 0; }
 input, textarea { padding:8px; margin:6px 0; width:100%; max-width:320px }
 button { padding:8px 12px }
+section { margin:20px; align-items: center ;justify-content: center; display: flex; flex-direction: column;     }
+nav { background:#333; color:#fff; padding:10px; }
+nav a { color:#fff; margin:0 10px; text-decoration:none; }
+nav a:hover { text-decoration:underline; }
+h2 { color:#333; }
+.movie-card { border:1px solid #ccc; padding:10px; margin:10px 0; }
+.movie-card img { max-width:100%; height:auto; }
+.movie-card h3 { margin:0; }
+.movie-card p { margin:5px 0; }
+.error { color:red; }
+.success { color:green; }     
+footer { text-align:center; padding:10px; background:#f1f1f1; margin-top:20px; }    
+/* Add any additional styles as needed */
+Outlet{ padding: 20px; }
+main{ min-height: calc(100vh - 120px); } /* Adjust based on header/footer height */ 
+/* Responsive design */
+@media (max-width: 600px) {
+  nav { flex-direction: column; text-align: center; }
+  nav a { margin: 5px 0; }
+}   
+/* Additional styles for better UI/UX */
+button { background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+button:hover { background-color: #45a049; }
+input, textarea { border: 1px solid #ccc; border-radius: 4px; }
+.movie-card { border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+.movie-card:hover { box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+header, footer { box-shadow: 0 2px 5px rgba(0,0,0,0,0.1); }
+header { position: sticky; top: 0; z-index: 1000; }
+/* Smooth transitions */        
+nav a, button { transition: background-color 0.3s, color 0.3s; }
+.movie-card { transition: box-shadow 0.3s; }
+/* Form focus styles */
+input:focus, textarea:focus { border-color: #4CAF50; outline: none; box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); }
+/* Accessibility improvements */
+nav a:focus, button:focus { outline: 2px solid #4CAF50; outline-offset: 2px; }
+/* Dark mode support */                     
+@media (prefers-color-scheme: dark) {
+  body { background-color: #121212; color: #e0e0e0; }
+  nav { background: #1f1f1f; }
+  nav a { color: #bb86fc; }
+  footer { background: #1f1f1f; }
+  .movie-card { background: #1e1e1e; border-color: #333; }
+  input, textarea { background: #1e1e1e; color: #e0e0e0; border-color: #333; }
+  button { background-color: #bb86fc; color: #121212; }
+  button:hover { background-color: #9b59b6; }
+}       
+/* Custom scrollbar for better aesthetics */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #888; border-radius: 4px; }     
+::-webkit-scrollbar-thumb:hover { background: #555; }
+/* Animation for loading states */
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.loader { border: 4px solid #f3f3f3; border-top: 4px solid #4CAF50; border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; margin: 20px auto; } 
+/* Additional spacing for better readability */
+section { padding: 20px; }      
+/* Consistent margin for headings */
+h2, h3 { margin-bottom: 10px; }
+/* Consistent spacing for paragraphs */         
+p { margin-bottom: 15px; line-height: 1.6; }
+/* Consistent spacing for form elements */
+form > * { margin-bottom: 15px; }
+/* Highlight important messages */
+.error, .success { font-weight: bold; }         
+/* Ensure images are responsive */
+img { max-width: 100%; height: auto; display: block; margin: 0 auto; } 
+/* Center align text in headers and footers */
+header, footer { text-align: center; }      
+/* Add hover effect to movie cards */
+.movie-card:hover { transform: translateY(-5px); }
+
